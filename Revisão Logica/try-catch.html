@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Try catch </title>
+</head>
+<body>
+    <script src="soma.js"></script>
+
+    <script>
+
+        //console.log(soma(3, 5))
+        //alert(soma(3, 'a'))
+        //document.write(soma(4, 2))
+
+        alert(soma(3, 4))
+
+        let sum = ''
+
+        try {
+            sum = soma(3, 3)
+        } catch(e) {
+            alert('Ocorreu um erro')
+            console.log(e.message)
+        } finally {
+            console.log('Bloco finally')
+        }
+
+        console.log(sum)
+    </script>
+</body>
+</html>
