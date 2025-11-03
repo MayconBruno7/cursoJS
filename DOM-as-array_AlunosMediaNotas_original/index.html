@@ -138,36 +138,50 @@
   <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
   <script src="js/calc.js"></script>
   <script>
-    const indices_notas = {
-      n1: 1,
-      n2: 2,
-      n3: 3,
-      n4: 4,
-      media: 1,
-    }
 
-      (function () {
-        const trs = document.querySelectorAll("tbody tr")
+    (function () {
+      function pegaIndice(indice) {
+        const trHeader = document.querySelector('thead tr')
+        const thsHeader = trHeader.querySelectorAll('th')
 
-        let x = 0;
-        let media = 0;
+        const th = trHeader.querySelector(`[aluno-nota="${indice}"']`)
+        console.log(th)
 
-        while (trs[x]) {
-          console.log(trs[x])
+        // thsHeader.indexOf(th)
+        // const i = Array.prototype.indexOf.call(thsHeader, th)
+        const i = Array.from(thsHeader).indexOf(th)
+        // const i = [...thsHeader].indexOf(th)
+        return i
+        console.log(i)
+      }
+      const indices_notas = {
+        n1: pegaIndice('n1'),
+        n2: pegaIndice('n2'),
+        n3: pegaIndice('n3'),
+        n4: pegaIndice('n4'),
+        media: pegaIndice('media'),
+      }
+      const trs = document.querySelectorAll("tbody tr")
 
-          const tds = trs[x].querySelectorAll("td")
+      let x = 0;
+      let media = 0;
 
-          media = avarege(
-            parseFloat(tds[indices_notas.n1].textContent),
-            parseFloat(tds[indices_notas.n2].textContent),
-            parseFloat(tds[indices_notas.n3].textContent),
-            parseFloat(tds[indices_notas.n4].textContent)
-          )
-          x++
+      while (trs[x]) {
+        console.log(trs[x])
 
-          tds[indices_notas.media].textContent = media
-        }
-      })()
+        const tds = trs[x].querySelectorAll("td")
+
+        media = avarege(
+          parseFloat(tds[indices_notas.n1].textContent),
+          parseFloat(tds[indices_notas.n2].textContent),
+          parseFloat(tds[indices_notas.n3].textContent),
+          parseFloat(tds[indices_notas.n4].textContent)
+        )
+        x++
+
+        tds[indices_notas.media].textContent = media
+      }
+    })()
   </script>
 
 </body>
