@@ -158,14 +158,17 @@
             }
             const indices_notas = {}
 
+            Array.from(thsAlunoNotas).forEach(function (th) {
+                let prop = th.getAttribute("aluno-nota")
+                indices_notas[prop] = pegaIndice(prop)
+            })
+
             const trs = document.querySelectorAll("tbody tr")
 
             let x = 0;
             let media = 0;
 
             while (trs[x]) {
-                console.log(trs[x])
-
                 const tds = trs[x].querySelectorAll("td")
 
                 media = avarege(
